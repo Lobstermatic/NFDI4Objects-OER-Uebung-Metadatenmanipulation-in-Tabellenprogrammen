@@ -16,13 +16,4 @@ author:
     attributes:
       corresponding: true
     role: "writing – original draft"
-  - name:
-      given: John
-      family: Doe
-    orcid: 0000-0000-0000-0000
-    email: john@doe.com
-    affiliation: 
-      - name: Johns Institution
-        city: Johns City
-        url: https://john.doe.com
-    role: "writing – review & editing"
+  
