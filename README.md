@@ -1,6 +1,6 @@
 # OER-Baustein: Übung Metadatenmanipulation in Tabellenprogrammen
 
-Diese OER-Übung bietet eine praktische Einführung in Struktur von Tabellendaten und zeigt Ihnen, wie Sie Metadaten in der XML-Datei einer .ods-Datei anlegen können. 
+Diese OER-Übung bietet eine praktische Einführung in Struktur von Tabellendateien und zeigt Ihnen, wie Sie Metadaten in der XML-Datei einer .ods-Datei anlegen können. 
 
 
 ## Open Educational Resources (OER)
