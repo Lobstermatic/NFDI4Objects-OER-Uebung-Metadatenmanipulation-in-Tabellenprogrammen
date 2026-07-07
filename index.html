@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Henrike Backhaus">
+<meta name="keywords" content="Stichwort 1, Stichwort 2">
+<meta name="description" content="Kurzbeschreibung der Inhalte der Übung.">
+
+<title>NFDI4Objects OER-Übung Metadatenmanipulation in Tabellenprogrammen</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assets/logos/logo_klein.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-36dd54dba5487bc2fcf29beb31b3c0b9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f940921a2500715a642e30b704ed2170.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-36dd54dba5487bc2fcf29beb31b3c0b9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-1793b58107004fec7c9876b320cff282.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1793b58107004fec7c9876b320cff282.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1793b58107004fec7c9876b320cff282.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+<meta property="og:title" content="NFDI4Objects OER-Übung Metadatenmanipulation in Tabellenprogrammen">
+<meta property="og:description" content="Kurzbeschreibung der Inhalte der Übung.">
+<meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:locale" content="de_DE">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title"><p><img src=".\assets\logos\logo_gross.png" class="light-content img-fluid" alt="Logo des Projekts"></p></h2>
+   
+  <ul>
+  <li><a href="#praktische-bezüge" id="toc-praktische-bezüge" class="nav-link active" data-scroll-target="#praktische-bezüge"><span class="header-section-number">1</span> Praktische Bezüge</a></li>
+  <li><a href="#datengrundlage" id="toc-datengrundlage" class="nav-link" data-scroll-target="#datengrundlage"><span class="header-section-number">2</span> Datengrundlage</a></li>
+  <li><a href="#vorbereitung" id="toc-vorbereitung" class="nav-link" data-scroll-target="#vorbereitung"><span class="header-section-number">3</span> Vorbereitung</a></li>
+  <li><a href="#aufgabenstellungen" id="toc-aufgabenstellungen" class="nav-link" data-scroll-target="#aufgabenstellungen"><span class="header-section-number">4</span> Aufgabenstellungen</a></li>
+  <li><a href="#ergebnisse" id="toc-ergebnisse" class="nav-link" data-scroll-target="#ergebnisse"><span class="header-section-number">5</span> Ergebnisse</a></li>
+  
+  
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">NFDI4Objects OER-Übung Metadatenmanipulation in Tabellenprogrammen</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> qmd</button></div></div>
+<p class="subtitle lead">Tabellendateien in ihre Einzelteile zerlegen</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Übung</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>Kurzbeschreibung der Inhalte der Übung.</p>
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Autor:in</div>
+  <div class="quarto-title-meta-heading">Institution</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Henrike Backhaus <a href="mailto:henrike.backhaus@hs-mainz.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-8793-4185" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="hs-mainz.de">
+            Hochschule Mainz
+            </a>
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Veröffentlicht am</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">07.07.2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Zuletzt geändert am</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">07.07.2026</p>
+    </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/XXXXXXX.XXXXXXX">XXXXXXX.XXXXXXX</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Zusammenfassung</div>
+    <p>Abstract zur Übung.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Stichwörter</div>
+    <p>Stichwort 1, Stichwort 2</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="praktische-bezüge" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="praktische-bezüge"><span class="header-section-number">1</span> Praktische Bezüge</h2>
+<p>Sie wollen ein Tabellendokument mit Metadaten versehen, damit Informationen, wie bspw. Autor:innen auch für andere Forschende nachvollziehbar sind. Die übliche Vogehensweise, Metadaten innerhalb der Tabellenblätter selbst zu speichern, wollen Sie nicht anwenden, da es sich z.B. um statistische Daten handelt, die “sauber” abgelegt sein müssen. Auch ein README wollen Sie ungern verfassen, da Sie wissen, dass separat abgelegte Informationen oftmals verloren gehen und das wollen Sie vermeiden.</p>
+<section id="voraussetzungen" class="level3 kolophon unnumbered unlisted">
+<h3 class="kolophon unnumbered unlisted anchored" data-anchor-id="voraussetzungen">Voraussetzungen</h3>
+<p>Für das Verständnis dieser Übung werden vorausgesetzt:</p>
+<p>Software:</p>
+<ul>
+<li>ein leistungsstarker Text-Editor (empfohlen: <a href="https://notepad-plus-plus.org/downloads/" title="Link zum Download von Notepad++">Notepad++</a>)</li>
+<li>LibreOffice Calc
+<ul>
+<li>Sollte LibreOffice noch nicht auf Ihrem Rechner installiert sein, <a href="https://de.libreoffice.org/download/download/" title="Link zur Download Seite von Libre Office">holen Sie das nach</a>.</li>
+</ul></li>
+</ul>
+<p>Kompetenzen:</p>
+<ul>
+<li>Kenntnis der verschiedenen Arten von Metadaten</li>
+<li>Verständnis von Metadatenschemata</li>
+<li>XML-Grundkenntnisse oder grundlegendes Verständnis von Markup-Sprachen.</li>
+</ul>
+</section>
+</section>
+<section id="datengrundlage" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="datengrundlage"><span class="header-section-number">2</span> Datengrundlage</h2>
+<p>Ausgangspunkt der Übung ist ein Datensatz, den Vera Klontza-Jaklova und Adam Geisler Ende 2022 über die Datenplattform Pandora publiziert haben:</p>
+<blockquote class="blockquote">
+<p><span class="citation" data-cites="klontza-jaklova2023">(<a href="#ref-klontza-jaklova2023" role="doc-biblioref">Klontza-Jaklova und Geisler 2023</a>)</span> Klontza-Jaklova, Vera, und Adam Geisler. „SYNECDEMUS NOVUS“. Csv-file. Pandora, 12. Januar 2023. <a href="https://www.doi.org/10.48493/b8mn-4n64" class="uri">https://www.doi.org/10.48493/b8mn-4n64</a>.</p>
+</blockquote>
+<p>Wir arbeiten mit einem <strong>Derivat</strong> der <code>.xls</code>-Datei, das Sie im Ordner <code>data</code> finden können.</p>
+</section>
+<section id="vorbereitung" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="vorbereitung"><span class="header-section-number">3</span> Vorbereitung</h2>
+<p>Bevor wir einen Blick in die Daten selbst werfen, bereiten wir eine geeignete Verzeichnis-Struktur für die Übung vor. Für eine übersichtliche Aufgabenstellung, wie in dieser Übung, bietet sich folgendes Schema an:</p>
+<ul>
+<li><code>01_Ausgangsdaten</code>: für alle heruntergeladenen Daten in ihrem Originalzustand inkl. Dokumentation der Datenquelle etc. in einer .md-Datei mit Links und Bemerkungen.</li>
+<li><code>02_Datenprodukte</code>: für alle aus den Ausgangsdaten abgeleiteten Datensätze, die für die Auswertung benötigt werden. Anzustreben ist die Verwendung nicht-proprietärer, offener und für eine Archivierung geeigneter Datenformate.</li>
+</ul>
+<p>Achten Sie darauf, dass der Verzeichnispfad keine Sonder- oder Leerzeichen enthält.</p>
+<p>Laden Sie anschließend den <a href="data/byzantine_sites_crete_31dec2022_final_correct_encoding.csv">vorbereiteten Datensatz</a> in das Verzeichnis <code>01_Ausgangsdaten</code> herunter:</p>
+</section>
+<section id="aufgabenstellungen" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="aufgabenstellungen"><span class="header-section-number">4</span> Aufgabenstellungen</h2>
+<p>Wir wollen den Datensatz nun mit Metadaten versehen. Navigieren Sie dazu ins <a href="https://pandoradata.earth/dataset/synecdemus-novus">Repositorium Synecdemus Novus</a>, aus dem der Datensatz ursprünglich stammt, und sehen Sie sich um. Welche Metadaten können Sie hier finden?</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>Öffnen Sie den Datensatz mit LibreCalc und navigieren Sie zu <code>Datei &gt; Eigenschaften</code>. Sie sehen nun ein Fenster, in das Sie vorgegebene Metadaten zur Datei eintragen können, bspw.:</p>
+<ul>
+<li>Titel</li>
+<li>Mitwirkende</li>
+<li>Rechte</li>
+<li>Quelle</li>
+<li>etc.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/n4o_dialog_libreofficecalc_dateieigenschaften.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Dialogfenster zu Metadaten"><img src="img/n4o_dialog_libreofficecalc_dateieigenschaften.png" class="img-fluid figure-img" alt="Dialogfenster zu Metadaten"></a></p>
+<figcaption>Dialogfenster zu Metadaten</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Tragen Sie folgende Metadaten ein:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="ss">- </span>Titel: byzantine_sites_crete_31dec2022_final_correct_encoding.csv</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ss">- </span>Herausgeber(in): Klontza-Jaklova, Vera, und Adam Geisler</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ss">- </span>Quelle: https://www.doi.org/10.48493/b8mn-4n64</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Speichern Sie die Datei als <code>.ods</code>-Datei im Ordner <code>02_Datenprodukte</code> ab.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/speichernunter_ods.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Speichern unter…"><img src="img/speichernunter_ods.png" class="img-fluid figure-img" alt="Speichern unter…"></a></p>
+<figcaption>Speichern unter…</figcaption>
+</figure>
+</div>
+<p>Schließen Sie LibreCalc. Wenn Sie jetzt die <code>.ods</code>-Datei wieder mit LibreCalc öffnen, finden Sie die eingetragenen Metadaten weiterhin in den Eigenschaften.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wichtig
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sollten die Dateiendungen in Ihrem Explorer nicht angezeigt werden, müssen Sie unter “Ansicht” ein Häkchen bei “Dateinamenerweiterungen” setzen.</p>
+</div>
+</div>
+<p>Wir wenden jetzt einen Trick an, um die soeben von uns hinterlegten Metadaten genauer zu sichten. Wie bereits oben beschrieben, handelt es sich bei <code>.ods</code> um ein <code>.zip</code>-Archiv mit XML-Dateien. Benennen Sie die <code>.ods</code>-Dateiendung einfach in <code>.zip</code> um, entpacken und öffnen Sie den Ordner.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p>Sie finden nun eine Datei “meta.xml” - doppelklicken Sie, um sie zu öffnen (ggf. müssen Sie einen Browser dafür auswählen). Sie sehen nun den Code, der zu den Metadaten hinterlegt ist.</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/meta_ods.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="XML zu den Metadaten"><img src="img/meta_ods.PNG" class="img-fluid figure-img" alt="XML zu den Metadaten"></a></p>
+<figcaption>XML zu den Metadaten</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Aufgabe 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Lösung</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>Wie sind die Metadaten im XML strukturiert? Was müssen wir bei der Eingabe also beachten?</p>
+<p>Auf welches Metadatenschema beziehen sich die Angaben?</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Ab Zeile 6 können wir sehen, dass es vermeintlich mehrere “publisher” des Datensatzes gibt. Dies ergibt sich daraus, dass wir im Eigenschaften-Feld in LibreOffice Calc Kommata genutzt haben, um Nach- und Vornamen von Vera Klontza-Jaklova und Adam Geisler voneinander zu trennen. Die Translation aus LibreOffice Calc versteht die Kommata als Angabe jeweils neuer “publisher”.</p>
+<p>Das “&lt;dc:publisher&gt;” verweist auf den <a href="https://www.dublincore.org/">Dublin Core</a>, der hier als Metadatenschema hinterlegt ist. Der Dublin Core ist eines der gängigsten Metadatenschemata zur Beschreibung von elektronischen Ressourcen.</p>
+</div>
+</div>
+</div>
+<p>Schließen Sie den Browser und öffnen Sie die Datei “meta.xml” mit <em>Notepad++</em> (ggf. müssen Sie in der Ansicht einen automatischen Zeilenumbruch aktivieren).</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Aufgabe</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Schritt 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Schritt 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Bereinigen Sie die Angaben zu den Herausgeber:innen.</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>Korrigieren Sie die Angaben, indem Sie den Vor- und Nachnamen von Vera Klontza-Jaklova zusammenführen.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource xml code-overflow-wrap number-lines code-with-copy"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">&lt;?xml</span> <span class="ot">version=</span><span class="st">"1.0"</span> <span class="ot">encoding=</span><span class="st">"UTF-8"</span><span class="fu">?&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>&lt;<span class="kw">office:document-meta</span> <span class="ot">xmlns:office=</span><span class="st">"urn:oasis:names:tc:opendocument:xmlns:office:1.0"</span> <span class="ot">xmlns:ooo=</span><span class="st">"http://openoffice.org/2004/office"</span> <span class="ot">xmlns:xlink=</span><span class="st">"http://www.w3.org/1999/xlink"</span> <span class="ot">xmlns:dc=</span><span class="st">"http://purl.org/dc/elements/1.1/"</span> <span class="ot">xmlns:meta=</span><span class="st">"urn:oasis:names:tc:opendocument:xmlns:meta:1.0"</span> <span class="ot">xmlns:grddl=</span><span class="st">"http://www.w3.org/2003/g/data-view#"</span> <span class="ot">office:version=</span><span class="st">"1.4"</span>&gt;&lt;<span class="kw">office:meta</span>&gt;&lt;<span class="kw">meta:editing-cycles</span>&gt;1&lt;/<span class="kw">meta:editing-cycles</span>&gt;&lt;<span class="kw">meta:editing-duration</span>&gt;PT3M9S&lt;/<span class="kw">meta:editing-duration</span>&gt;&lt;<span class="kw">dc:publisher</span>&gt;Vera Klontza-Jaklova&lt;/<span class="kw">dc:publisher</span>&gt;&lt;<span class="kw">dc:publisher</span>&gt;Adam Geisler&lt;/<span class="kw">dc:publisher</span>&gt;&lt;<span class="kw">dc:source</span>&gt;https://www.doi.org/10.48493/b8mn-4n64&lt;/<span class="kw">dc:source</span>&gt;&lt;<span class="kw">dc:title</span>&gt;byzantine_sites_crete_31dec2022_final_correct_encoding.csv&lt;/<span class="kw">dc:title</span>&gt;&lt;<span class="kw">dc:date</span>&gt;2025-10-28T10:17:32.651077800&lt;/<span class="kw">dc:date</span>&gt;&lt;<span class="kw">meta:document-statistic</span> <span class="ot">meta:table-count=</span><span class="st">"1"</span> <span class="ot">meta:cell-count=</span><span class="st">"11890"</span> <span class="ot">meta:object-count=</span><span class="st">"0"</span>/&gt;&lt;<span class="kw">meta:generator</span>&gt;LibreOffice/25.2.6.2$Windows_X86_64 LibreOffice_project/729c5bfe710f5eb71ed3bbde9e06a6065e9c6c5d&lt;/<span class="kw">meta:generator</span>&gt;&lt;/<span class="kw">office:meta</span>&gt;&lt;/<span class="kw">office:document-meta</span>&gt;</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p>Speichern Sie die Datei “meta.xml” ab und schließen Sie sie. Erstellen Sie aus den Dateien in Ihrem extrahierten Ordner ein neues <code>.zip</code>-Archiv (alle Dateien markieren –&gt; Rechtsklick <em>Senden an</em>…). Benennen Sie dieses wieder in eine <code>.ods</code>-Datei um. Wenn Sie diese nun öffnen, finden Sie in den Eigenschaften die korrigierten Metadaten zu den Herausgeber:innen.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="ergebnisse" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="ergebnisse"><span class="header-section-number">5</span> Ergebnisse</h2>
+<p>Sie haben nun Metadaten zu einem in <code>.csv</code> gespeicherten Datensatz angelegt und im XML manipuliert. Der Vorteil ist: Auf diese Weise können Sie Metadaten zu Tabellendaten ablegen, die innerhalb der Datei selbst gespeichert sind. Der Nachteil ist: Sie können lediglich Metadatentypen ablegen, die von <code>.ods</code> erlaubt werden. Sollten Sie weitere oder umfassendere Metadaten anlegen wollen, müssen Sie auf andere Wege zurück greifen.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Transferaufgaben</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<section id="transferaufgabe-1" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="transferaufgabe-1"><span class="header-section-number">5.1</span> Transferaufgabe 1</h3>
+<p>Vergleichen Sie die im Repositorium der Ursprungsdatei hinterlegten Metadaten mit den möglichen Angaben im <a href="https://www.dublincore.org/resources/userguide/creating_metadata/#Titles">Dublin Core</a></p>
+<p>Finden Sie heraus, welche Metadatenarten in Dublin Core hinter welchem Metadatum im <code>.ods</code>hinterlegt sind.</p>
+<p>Hinterlegen Sie auf oben beschriebene Weise weitere Metadaten zu Ihrer Tabelle.</p>
+</section>
+<section id="lösungsvorschlag" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="lösungsvorschlag"><span class="header-section-number">5.2</span> Lösungsvorschlag</h3>
+<p>Tragen Sie in der <code>.ods</code>-Datei in jedem Eigenschaftenfeld die jeweilige Bezeichnung des Eigenschaftenfelds ein und rufen Sie - wie oben beschrieben - die Datei “meta.xml” auf. Sie sehen nun, wie die jeweiligen Typen aus dem Dublin Core ins Deutsche übersetzt wurden und können Ihre Metadaten entsprechend eintragen. <img src="img/Eigenschaften.PNG" class="img-fluid"></p>
+</section>
+</div>
+</div>
+</div>
+<p>Schließen Sie den Browser und öffnen Sie die Datei “meta.xml” mit <em>Notepad++</em> (ggf. müssen Sie in der Ansicht einen automatischen Zeilenumbruch aktivieren).</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Transferaufgabe 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Lösung</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p>Fügen Sie über die Datei “meta.xml” weitere relevante Metadaten hinzu. Wie werden diese nach Kompilation der Dateien zu einer <code>.ods</code>-Datei wohl dargestellt?</p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p>Da in der grafischen Oberfläche von LibreOffice Calc lediglich vorgegebene Eigenschaften abgebildert werden, werden Ihre zusätzlichen Metadaten nicht abgerufen. Allerdings bleiben Sie in der <code>.xml</code>-Datei als Metadaten erhalten und sind so - mit entsprechenden Hinweisen (z.B. in ReadMes) für die Nachnutzenden innerhalb der Datei auffindbar.</p>
+</div>
+</div>
+</div>
+</section>
+
+
+
+<div id="quarto-appendix" class="default"><section id="nachnutzen" class="level2 appendix unnumbered"><h2 class="anchored quarto-appendix-heading">Nachnutzen</h2><div class="quarto-appendix-contents">
+
+<p>Alle sind herzlich eingeladen, diesen Baustein und die zugehörige Copyleft-Lizenz zu nutzen, um ihr Wissen und Expertise in die Verbesserung und Aktualisierung einzubringen.</p>
+<p>Unser Wunsch ist ein lebendiges, stetig aktualisiertes Dokument, das sich durch die Beiträge vieler verändert - im Einklang mit eines sich wandelnden Umfelds. Wir freuen uns im Falle einer Überarbeitung über eine kurze Notiz – das ist aber selbstverständlich keine Pflicht.</p>
+<!-- Verweise auf Website und Repository werden in _oer_metadata.yml global festgelegt. Wenn die OER nicht in einem git-Repository gehostet oder online bereitgestellt werden, können die folgenden zwei Zeilen gelöscht werden. -->
+<p><span class="emoji" data-emoji="link">🔗</span> <a href="https://github.com/nfdi4objects/oer-template-skript">Dieser Baustein als Website</a></p>
+<p><span class="emoji" data-emoji="link">🔗</span> <a href="https://nfdi4objects.github.io/oer-template-skript/">Quarto-Quellcode dieses Bausteins</a></p>
+<hr>
+<p>Diese Übung nutzt ein <a href="https://nfdi4objects.github.io/oer-template-skript/">FAIR-OER-Übungs-Template von NFDI4Objects</a>.</p>
+</div></section><section id="disclaimer-einsatz-von-llm" class="level2 appendix unnumbered"><h2 class="quarto-appendix-heading"></h2><div class="quarto-appendix-contents">
+
+<!-- Optionale Angaben zum Einsatz von LLM bei der Erstellung oder Überarbeitung der Übung -->
+<!-- An dieser Stelle werden von Quarto automatisch generierte Abschnitte angehängt:
+
+Bibliographie:
+Erstellt aus den in der qmd-Datei mit [@bibtex-Schlüssel] referenzierten Einträgen aus der Datei bibliographie.bib.
+Im Text nicht referenzierte Einträge aus der bibliographie.bib werden nicht zitiert.
+Der Zitierstil wird in der _oer_metadata.yml mit dem Schlüssel 'csl:' festgelegt. Im Verzeichnis /assets/csl/ sind gängige Zitierstile als csl-Datei vorhanden. Weitere sind hier zu finden: https://www.zotero.org/styles
+
+Lizenz:
+Angabe wird übernommen aus Schlüssel 'license:' in _oer_metadata.yml
+
+Urheber:innen
+Angabe wird übernommen aus der _oer_metadata.yml Schlüssel 'copyright:'
+
+Zitiervorschläge
+Mit BibTeX zitieren:
+Automatisch von Quarto aus den Metadaten insb. aus dem Schlüssel 'citation:' in der _oer_metadata.yml generiertes bibtex-Zitat.
+
+Bitte zitieren Sie diesen OER-Baustein als:
+Angabe generiert aus:
+  _autor_innen.yml
+  Schlüssel 'title:' in der qmd-Datei
+  Schlüssel 'issued' in der _oer_metadata.yml
+  Schlüssel 'doi:' in der _oer_metadata.yml / Wenn keine doi gesetzt wird der Titel mit dem Wert aus 'site-url:' in _oer_metadata.yml verlinkt.
+-->
+
+
+<!-- -->
+
+
+</div></section><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Disclaimer: Einsatz von LLM</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-klontza-jaklova2023" class="csl-entry" role="listitem">
+Klontza-Jaklova, V. und Geisler, A. 2023 <span>„SYNECDEMUS NOVUS“</span>. <a href="https://doi.org/10.48493/b8mn-4n64">https://doi.org/10.48493/b8mn-4n64</a>.
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Lizenz</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.de">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Urheber:innen</h2><div class="quarto-appendix-contents"><div>Freitext-Angaben zu Inhaber:innen des Urheberrechts an den Inhalten (Anzupassen im Schlüssel `copyright` in der Datei `_oer_metadata.yml`)</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Zitation</h2><div><div class="quarto-appendix-secondary-label">BibTeX</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@misc{backhaus2026,
+  author = {Backhaus, Henrike},
+  publisher = {Institution},
+  title = {NFDI4Objects OER-Übung Metadatenmanipulation in
+    Tabellenprogrammen},
+  date = {2026},
+  url = {https://github.com/nfdi4objects/oer-template-skript},
+  doi = {XXXXXXX.XXXXXXX},
+  langid = {de},
+  abstract = {Abstract zur Übung.}
+}
+</code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">Kurzzitat</div><div id="ref-backhaus2026" class="csl-entry quarto-appendix-citeas" role="listitem">
+Backhaus, H. 2026 <span>‘NFDI4Objects OER-Übung Metadatenmanipulation in
+Tabellenprogrammen’</span>, <em>Open Educational Resource</em>. <a href="https://doi.org/XXXXXXX.XXXXXXX">https://doi.org/XXXXXXX.XXXXXXX</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Quellcode</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">---</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="an">title:</span><span class="co"> "NFDI4Objects OER-Übung Metadatenmanipulation in Tabellenprogrammen"</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="an">subtitle:</span><span class="co"> "Tabellendateien in ihre Einzelteile zerlegen"</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="an">lang:</span><span class="co"> de</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="an">date:</span><span class="co"> today</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="an">date-format:</span><span class="co"> "DD.MM.YYYY"</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="an">metadata-files:</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">  - _layout.yml</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">  - _autor_innen.yml</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">  - _oer_metadata.yml</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co"># Optional</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="an">bibliography:</span><span class="co"> bibliographie.bib</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="an">toc-expand:</span><span class="co"> true</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="an">toc-title:</span><span class="co"> |</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">  {{&lt; brand logo large &gt;}}</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="an">toc-location:</span><span class="co"> right</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="an">number-sections:</span><span class="co"> true # Auf false setzen, wenn keine automatische Abschnittsnummerierung gewünscht</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="an">lightbox:</span><span class="co"> true</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="an">crossref:</span><span class="co"> </span></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="co">  lof-title: "Liste der Abbildungen"</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="co"># Für CI-build in github</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="an">execute:</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="co">  freeze: auto</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="co">---</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a></span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="fu">## Praktische Bezüge</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a></span>
+<span id="cb3-30"><a href="#cb3-30"></a>Sie wollen ein Tabellendokument mit Metadaten versehen, damit Informationen, wie bspw. Autor\:innen auch für andere Forschende nachvollziehbar sind. Die übliche Vogehensweise, Metadaten innerhalb der Tabellenblätter selbst zu speichern, wollen Sie nicht anwenden, da es sich z.B. um statistische Daten handelt, die "sauber" abgelegt sein müssen. Auch ein README wollen Sie ungern verfassen, da Sie wissen, dass separat abgelegte Informationen oftmals verloren gehen und das wollen Sie vermeiden.</span>
+<span id="cb3-31"><a href="#cb3-31"></a></span>
+<span id="cb3-32"><a href="#cb3-32"></a><span class="fu">### Voraussetzungen {.kolophon .unnumbered .unlisted}</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a></span>
+<span id="cb3-34"><a href="#cb3-34"></a>Für das Verständnis dieser Übung werden vorausgesetzt:</span>
+<span id="cb3-35"><a href="#cb3-35"></a></span>
+<span id="cb3-36"><a href="#cb3-36"></a>Software:</span>
+<span id="cb3-37"><a href="#cb3-37"></a></span>
+<span id="cb3-38"><a href="#cb3-38"></a><span class="ss">- </span>ein leistungsstarker Text-Editor (empfohlen: <span class="co">[</span><span class="ot">Notepad++</span><span class="co">](https://notepad-plus-plus.org/downloads/ "Link zum Download von Notepad++")</span>)</span>
+<span id="cb3-39"><a href="#cb3-39"></a><span class="ss">- </span>LibreOffice Calc</span>
+<span id="cb3-40"><a href="#cb3-40"></a><span class="ss">  - </span>Sollte LibreOffice noch nicht auf Ihrem Rechner installiert sein, <span class="co">[</span><span class="ot">holen Sie das nach</span><span class="co">](https://de.libreoffice.org/download/download/ "Link zur Download Seite von Libre Office")</span>.</span>
+<span id="cb3-41"><a href="#cb3-41"></a></span>
+<span id="cb3-42"><a href="#cb3-42"></a>Kompetenzen:</span>
+<span id="cb3-43"><a href="#cb3-43"></a></span>
+<span id="cb3-44"><a href="#cb3-44"></a><span class="ss">- </span>Kenntnis der verschiedenen Arten von Metadaten</span>
+<span id="cb3-45"><a href="#cb3-45"></a><span class="ss">- </span>Verständnis von Metadatenschemata</span>
+<span id="cb3-46"><a href="#cb3-46"></a><span class="ss">- </span>XML-Grundkenntnisse oder grundlegendes Verständnis von Markup-Sprachen.</span>
+<span id="cb3-47"><a href="#cb3-47"></a></span>
+<span id="cb3-48"><a href="#cb3-48"></a><span class="fu">## Datengrundlage</span></span>
+<span id="cb3-49"><a href="#cb3-49"></a></span>
+<span id="cb3-50"><a href="#cb3-50"></a>Ausgangspunkt der Übung ist ein Datensatz, den Vera Klontza-Jaklova und Adam Geisler Ende 2022 über die Datenplattform Pandora publiziert haben:</span>
+<span id="cb3-51"><a href="#cb3-51"></a></span>
+<span id="cb3-52"><a href="#cb3-52"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">@klontza-jaklova2023</span><span class="co">]</span><span class="at"> Klontza-Jaklova, Vera, und Adam Geisler. „SYNECDEMUS NOVUS“. Csv-file. Pandora, 12. Januar 2023. </span><span class="ot">&lt;https://www.doi.org/10.48493/b8mn-4n64&gt;</span><span class="at">.</span></span>
+<span id="cb3-53"><a href="#cb3-53"></a></span>
+<span id="cb3-54"><a href="#cb3-54"></a>Wir arbeiten mit einem **Derivat** der <span class="in">`.xls`</span>-Datei, das Sie im Ordner <span class="in">`data`</span> finden können.</span>
+<span id="cb3-55"><a href="#cb3-55"></a></span>
+<span id="cb3-56"><a href="#cb3-56"></a><span class="fu">## Vorbereitung</span></span>
+<span id="cb3-57"><a href="#cb3-57"></a></span>
+<span id="cb3-58"><a href="#cb3-58"></a>Bevor wir einen Blick in die Daten selbst werfen, bereiten wir eine geeignete Verzeichnis-Struktur für die Übung vor. Für eine übersichtliche Aufgabenstellung, wie in dieser Übung, bietet sich folgendes Schema an:</span>
+<span id="cb3-59"><a href="#cb3-59"></a></span>
+<span id="cb3-60"><a href="#cb3-60"></a><span class="ss">-   </span><span class="in">`01_Ausgangsdaten`</span>: für alle heruntergeladenen Daten in ihrem Originalzustand inkl. Dokumentation der Datenquelle etc. in einer .md-Datei mit Links und Bemerkungen.</span>
+<span id="cb3-61"><a href="#cb3-61"></a><span class="ss">-   </span><span class="in">`02_Datenprodukte`</span>: für alle aus den Ausgangsdaten abgeleiteten Datensätze, die für die Auswertung benötigt werden. Anzustreben ist die Verwendung nicht-proprietärer, offener und für eine Archivierung geeigneter Datenformate.</span>
+<span id="cb3-62"><a href="#cb3-62"></a></span>
+<span id="cb3-63"><a href="#cb3-63"></a>Achten Sie darauf, dass der Verzeichnispfad keine Sonder- oder Leerzeichen enthält.</span>
+<span id="cb3-64"><a href="#cb3-64"></a></span>
+<span id="cb3-65"><a href="#cb3-65"></a>Laden Sie anschließend den <span class="co">[</span><span class="ot">vorbereiteten Datensatz</span><span class="co">](data/byzantine_sites_crete_31dec2022_final_correct_encoding.csv)</span> in das Verzeichnis <span class="in">`01_Ausgangsdaten`</span> herunter:</span>
+<span id="cb3-66"><a href="#cb3-66"></a></span>
+<span id="cb3-67"><a href="#cb3-67"></a><span class="fu">## Aufgabenstellungen</span></span>
+<span id="cb3-68"><a href="#cb3-68"></a></span>
+<span id="cb3-69"><a href="#cb3-69"></a>Wir wollen den Datensatz nun mit Metadaten versehen. Navigieren Sie dazu ins <span class="co">[</span><span class="ot">Repositorium Synecdemus Novus</span><span class="co">](https://pandoradata.earth/dataset/synecdemus-novus)</span>, aus dem der Datensatz ursprünglich stammt, und sehen Sie sich um. Welche Metadaten können Sie hier finden? </span>
+<span id="cb3-70"><a href="#cb3-70"></a></span>
+<span id="cb3-71"><a href="#cb3-71"></a>::::: columns</span>
+<span id="cb3-72"><a href="#cb3-72"></a>::: {.column width="60%"}</span>
+<span id="cb3-73"><a href="#cb3-73"></a>Öffnen Sie den Datensatz mit LibreCalc und navigieren Sie zu <span class="in">`Datei &gt; Eigenschaften`</span>. Sie sehen nun ein Fenster, in das Sie vorgegebene Metadaten zur Datei eintragen können, bspw.:</span>
+<span id="cb3-74"><a href="#cb3-74"></a></span>
+<span id="cb3-75"><a href="#cb3-75"></a><span class="ss">- </span>Titel</span>
+<span id="cb3-76"><a href="#cb3-76"></a><span class="ss">- </span>Mitwirkende</span>
+<span id="cb3-77"><a href="#cb3-77"></a><span class="ss">- </span>Rechte</span>
+<span id="cb3-78"><a href="#cb3-78"></a><span class="ss">- </span>Quelle</span>
+<span id="cb3-79"><a href="#cb3-79"></a><span class="ss">- </span>etc.</span>
+<span id="cb3-80"><a href="#cb3-80"></a></span>
+<span id="cb3-81"><a href="#cb3-81"></a>:::</span>
+<span id="cb3-82"><a href="#cb3-82"></a></span>
+<span id="cb3-83"><a href="#cb3-83"></a>::: {.column width="40%"}</span>
+<span id="cb3-84"><a href="#cb3-84"></a></span>
+<span id="cb3-85"><a href="#cb3-85"></a><span class="al">![Dialogfenster zu Metadaten](img/n4o_dialog_libreofficecalc_dateieigenschaften.png)</span></span>
+<span id="cb3-86"><a href="#cb3-86"></a></span>
+<span id="cb3-87"><a href="#cb3-87"></a>:::</span>
+<span id="cb3-88"><a href="#cb3-88"></a>:::::</span>
+<span id="cb3-89"><a href="#cb3-89"></a></span>
+<span id="cb3-90"><a href="#cb3-90"></a>Tragen Sie folgende Metadaten ein:</span>
+<span id="cb3-91"><a href="#cb3-91"></a></span>
+<span id="cb3-92"><a href="#cb3-92"></a><span class="in">```markdown</span></span>
+<span id="cb3-93"><a href="#cb3-93"></a><span class="ss">- </span>Titel: byzantine_sites_crete_31dec2022_final_correct_encoding.csv</span>
+<span id="cb3-94"><a href="#cb3-94"></a><span class="ss">- </span>Herausgeber(in): Klontza-Jaklova, Vera, und Adam Geisler</span>
+<span id="cb3-95"><a href="#cb3-95"></a><span class="ss">- </span>Quelle: https://www.doi.org/10.48493/b8mn-4n64</span>
+<span id="cb3-96"><a href="#cb3-96"></a></span>
+<span id="cb3-97"><a href="#cb3-97"></a><span class="in">```</span></span>
+<span id="cb3-98"><a href="#cb3-98"></a></span>
+<span id="cb3-99"><a href="#cb3-99"></a>Speichern Sie die Datei als <span class="in">`.ods`</span>-Datei im Ordner <span class="in">`02_Datenprodukte`</span> ab. </span>
+<span id="cb3-100"><a href="#cb3-100"></a></span>
+<span id="cb3-101"><a href="#cb3-101"></a><span class="al">![Speichern unter...](img/speichernunter_ods.png)</span></span>
+<span id="cb3-102"><a href="#cb3-102"></a></span>
+<span id="cb3-103"><a href="#cb3-103"></a>Schließen Sie LibreCalc. Wenn Sie jetzt die <span class="in">`.ods`</span>-Datei wieder mit LibreCalc öffnen, finden Sie die eingetragenen Metadaten weiterhin in den Eigenschaften.</span>
+<span id="cb3-104"><a href="#cb3-104"></a></span>
+<span id="cb3-105"><a href="#cb3-105"></a>::: callout-important</span>
+<span id="cb3-106"><a href="#cb3-106"></a>Sollten die Dateiendungen in Ihrem Explorer nicht angezeigt werden, müssen Sie unter "Ansicht" ein Häkchen bei "Dateinamenerweiterungen" setzen. </span>
+<span id="cb3-107"><a href="#cb3-107"></a>::: </span>
+<span id="cb3-108"><a href="#cb3-108"></a></span>
+<span id="cb3-109"><a href="#cb3-109"></a>Wir wenden jetzt einen Trick an, um die soeben von uns hinterlegten Metadaten genauer zu sichten. Wie bereits oben beschrieben, handelt es sich bei <span class="in">`.ods`</span> um ein <span class="in">`.zip`</span>-Archiv mit XML-Dateien. Benennen Sie die <span class="in">`.ods`</span>-Dateiendung einfach in <span class="in">`.zip`</span> um, entpacken und öffnen Sie den Ordner.</span>
+<span id="cb3-110"><a href="#cb3-110"></a></span>
+<span id="cb3-111"><a href="#cb3-111"></a>::: {layout-ncol=2}</span>
+<span id="cb3-112"><a href="#cb3-112"></a>Sie finden nun eine Datei "meta.xml" - doppelklicken Sie, um sie zu öffnen (ggf. müssen Sie einen Browser dafür auswählen). Sie sehen nun den Code, der zu den Metadaten hinterlegt ist.</span>
+<span id="cb3-113"><a href="#cb3-113"></a></span>
+<span id="cb3-114"><a href="#cb3-114"></a><span class="al">![XML zu den Metadaten](img/meta_ods.PNG)</span></span>
+<span id="cb3-115"><a href="#cb3-115"></a>:::</span>
+<span id="cb3-116"><a href="#cb3-116"></a></span>
+<span id="cb3-117"><a href="#cb3-117"></a>:::panel-tabset</span>
+<span id="cb3-118"><a href="#cb3-118"></a></span>
+<span id="cb3-119"><a href="#cb3-119"></a></span>
+<span id="cb3-120"><a href="#cb3-120"></a><span class="fu">### Aufgabe 1</span></span>
+<span id="cb3-121"><a href="#cb3-121"></a></span>
+<span id="cb3-122"><a href="#cb3-122"></a>Wie sind die Metadaten im XML strukturiert? Was müssen wir bei der Eingabe also beachten?</span>
+<span id="cb3-123"><a href="#cb3-123"></a></span>
+<span id="cb3-124"><a href="#cb3-124"></a>Auf welches Metadatenschema beziehen sich die Angaben?</span>
+<span id="cb3-125"><a href="#cb3-125"></a></span>
+<span id="cb3-126"><a href="#cb3-126"></a><span class="fu">### Lösung</span></span>
+<span id="cb3-127"><a href="#cb3-127"></a></span>
+<span id="cb3-128"><a href="#cb3-128"></a>Ab Zeile 6 können wir sehen, dass es vermeintlich mehrere "publisher" des Datensatzes gibt. Dies ergibt sich daraus, dass wir im Eigenschaften-Feld in LibreOffice Calc Kommata genutzt haben, um Nach- und Vornamen von Vera Klontza-Jaklova und Adam Geisler voneinander zu trennen. Die Translation aus LibreOffice Calc versteht die Kommata als Angabe jeweils neuer "publisher".</span>
+<span id="cb3-129"><a href="#cb3-129"></a></span>
+<span id="cb3-130"><a href="#cb3-130"></a>Das "<span class="sc">\&lt;</span>dc:publisher<span class="sc">\&gt;</span>" verweist auf den <span class="co">[</span><span class="ot">Dublin Core</span><span class="co">](https://www.dublincore.org/)</span>, der hier als Metadatenschema hinterlegt ist. Der Dublin Core ist eines der gängigsten Metadatenschemata zur Beschreibung von elektronischen Ressourcen. </span>
+<span id="cb3-131"><a href="#cb3-131"></a>:::</span>
+<span id="cb3-132"><a href="#cb3-132"></a></span>
+<span id="cb3-133"><a href="#cb3-133"></a>Schließen Sie den Browser und öffnen Sie die Datei "meta.xml" mit *Notepad++* (ggf. müssen Sie in der Ansicht einen automatischen Zeilenumbruch aktivieren).</span>
+<span id="cb3-134"><a href="#cb3-134"></a></span>
+<span id="cb3-135"><a href="#cb3-135"></a>:::panel-tabset</span>
+<span id="cb3-136"><a href="#cb3-136"></a></span>
+<span id="cb3-137"><a href="#cb3-137"></a><span class="fu">### Aufgabe </span></span>
+<span id="cb3-138"><a href="#cb3-138"></a></span>
+<span id="cb3-139"><a href="#cb3-139"></a>Bereinigen Sie die Angaben zu den Herausgeber\:innen.</span>
+<span id="cb3-140"><a href="#cb3-140"></a></span>
+<span id="cb3-141"><a href="#cb3-141"></a><span class="fu">### Schritt 1</span></span>
+<span id="cb3-142"><a href="#cb3-142"></a></span>
+<span id="cb3-143"><a href="#cb3-143"></a>Korrigieren Sie die Angaben, indem Sie den Vor- und Nachnamen von Vera Klontza-Jaklova zusammenführen.</span>
+<span id="cb3-144"><a href="#cb3-144"></a></span>
+<span id="cb3-145"><a href="#cb3-145"></a><span class="in">```xml {.code-overflow-wrap}</span></span>
+<span id="cb3-146"><a href="#cb3-146"></a><span class="fu">&lt;?xml</span> <span class="ot">version=</span><span class="st">"1.0"</span> <span class="ot">encoding=</span><span class="st">"UTF-8"</span><span class="fu">?&gt;</span></span>
+<span id="cb3-147"><a href="#cb3-147"></a>&lt;<span class="kw">office:document-meta</span> <span class="ot">xmlns:office=</span><span class="st">"urn:oasis:names:tc:opendocument:xmlns:office:1.0"</span> <span class="ot">xmlns:ooo=</span><span class="st">"http://openoffice.org/2004/office"</span> <span class="ot">xmlns:xlink=</span><span class="st">"http://www.w3.org/1999/xlink"</span> <span class="ot">xmlns:dc=</span><span class="st">"http://purl.org/dc/elements/1.1/"</span> <span class="ot">xmlns:meta=</span><span class="st">"urn:oasis:names:tc:opendocument:xmlns:meta:1.0"</span> <span class="ot">xmlns:grddl=</span><span class="st">"http://www.w3.org/2003/g/data-view#"</span> <span class="ot">office:version=</span><span class="st">"1.4"</span>&gt;&lt;<span class="kw">office:meta</span>&gt;&lt;<span class="kw">meta:editing-cycles</span>&gt;1&lt;/<span class="kw">meta:editing-cycles</span>&gt;&lt;<span class="kw">meta:editing-duration</span>&gt;PT3M9S&lt;/<span class="kw">meta:editing-duration</span>&gt;&lt;<span class="kw">dc:publisher</span>&gt;Vera Klontza-Jaklova&lt;/<span class="kw">dc:publisher</span>&gt;&lt;<span class="kw">dc:publisher</span>&gt;Adam Geisler&lt;/<span class="kw">dc:publisher</span>&gt;&lt;<span class="kw">dc:source</span>&gt;https://www.doi.org/10.48493/b8mn-4n64&lt;/<span class="kw">dc:source</span>&gt;&lt;<span class="kw">dc:title</span>&gt;byzantine_sites_crete_31dec2022_final_correct_encoding.csv&lt;/<span class="kw">dc:title</span>&gt;&lt;<span class="kw">dc:date</span>&gt;2025-10-28T10:17:32.651077800&lt;/<span class="kw">dc:date</span>&gt;&lt;<span class="kw">meta:document-statistic</span> <span class="ot">meta:table-count=</span><span class="st">"1"</span> <span class="ot">meta:cell-count=</span><span class="st">"11890"</span> <span class="ot">meta:object-count=</span><span class="st">"0"</span>/&gt;&lt;<span class="kw">meta:generator</span>&gt;LibreOffice/25.2.6.2$Windows_X86_64 LibreOffice_project/729c5bfe710f5eb71ed3bbde9e06a6065e9c6c5d&lt;/<span class="kw">meta:generator</span>&gt;&lt;/<span class="kw">office:meta</span>&gt;&lt;/<span class="kw">office:document-meta</span>&gt;</span>
+<span id="cb3-148"><a href="#cb3-148"></a><span class="in">```</span></span>
+<span id="cb3-149"><a href="#cb3-149"></a></span>
+<span id="cb3-150"><a href="#cb3-150"></a><span class="fu">### Schritt 2</span></span>
+<span id="cb3-151"><a href="#cb3-151"></a></span>
+<span id="cb3-152"><a href="#cb3-152"></a>Speichern Sie die Datei "meta.xml" ab und schließen Sie sie. Erstellen Sie aus den Dateien in Ihrem extrahierten Ordner ein neues <span class="in">`.zip`</span>-Archiv (alle Dateien markieren --&gt; Rechtsklick *Senden an*...). Benennen Sie dieses wieder in eine <span class="in">`.ods`</span>-Datei um. Wenn Sie diese nun öffnen, finden Sie in den Eigenschaften die korrigierten Metadaten zu den Herausgeber\:innen.</span>
+<span id="cb3-153"><a href="#cb3-153"></a></span>
+<span id="cb3-154"><a href="#cb3-154"></a>:::</span>
+<span id="cb3-155"><a href="#cb3-155"></a></span>
+<span id="cb3-156"><a href="#cb3-156"></a><span class="fu">## Ergebnisse</span></span>
+<span id="cb3-157"><a href="#cb3-157"></a></span>
+<span id="cb3-158"><a href="#cb3-158"></a>Sie haben nun Metadaten zu einem in <span class="in">`.csv`</span> gespeicherten Datensatz angelegt und im XML manipuliert. Der Vorteil ist: Auf diese Weise können Sie Metadaten zu Tabellendaten ablegen, die innerhalb der Datei selbst gespeichert sind.</span>
+<span id="cb3-159"><a href="#cb3-159"></a>Der Nachteil ist: Sie können lediglich Metadatentypen ablegen, die von <span class="in">`.ods`</span> erlaubt werden. Sollten Sie weitere oder umfassendere Metadaten anlegen wollen, müssen Sie auf andere Wege zurück greifen.</span>
+<span id="cb3-160"><a href="#cb3-160"></a></span>
+<span id="cb3-161"><a href="#cb3-161"></a>:::panel-tabset</span>
+<span id="cb3-162"><a href="#cb3-162"></a></span>
+<span id="cb3-163"><a href="#cb3-163"></a><span class="fu">## Transferaufgaben</span></span>
+<span id="cb3-164"><a href="#cb3-164"></a></span>
+<span id="cb3-165"><a href="#cb3-165"></a><span class="fu">### Transferaufgabe 1</span></span>
+<span id="cb3-166"><a href="#cb3-166"></a></span>
+<span id="cb3-167"><a href="#cb3-167"></a>Vergleichen Sie die im Repositorium der Ursprungsdatei hinterlegten Metadaten mit den möglichen Angaben im <span class="co">[</span><span class="ot">Dublin Core</span><span class="co">](https://www.dublincore.org/resources/userguide/creating_metadata/#Titles)</span></span>
+<span id="cb3-168"><a href="#cb3-168"></a></span>
+<span id="cb3-169"><a href="#cb3-169"></a>Finden Sie heraus, welche Metadatenarten in Dublin Core hinter welchem Metadatum im <span class="in">`.ods`</span>hinterlegt sind.</span>
+<span id="cb3-170"><a href="#cb3-170"></a></span>
+<span id="cb3-171"><a href="#cb3-171"></a>Hinterlegen Sie auf oben beschriebene Weise weitere Metadaten zu Ihrer Tabelle.</span>
+<span id="cb3-172"><a href="#cb3-172"></a></span>
+<span id="cb3-173"><a href="#cb3-173"></a><span class="fu">### Lösungsvorschlag</span></span>
+<span id="cb3-174"><a href="#cb3-174"></a></span>
+<span id="cb3-175"><a href="#cb3-175"></a>Tragen Sie in der <span class="in">`.ods`</span>-Datei in jedem Eigenschaftenfeld die jeweilige Bezeichnung des Eigenschaftenfelds ein und rufen Sie - wie oben beschrieben - die Datei "meta.xml" auf. Sie sehen nun, wie die jeweiligen Typen aus dem Dublin Core ins Deutsche übersetzt wurden und können Ihre Metadaten entsprechend eintragen. <span class="al">![](img/Eigenschaften.PNG)</span></span>
+<span id="cb3-176"><a href="#cb3-176"></a></span>
+<span id="cb3-177"><a href="#cb3-177"></a>:::</span>
+<span id="cb3-178"><a href="#cb3-178"></a></span>
+<span id="cb3-179"><a href="#cb3-179"></a>Schließen Sie den Browser und öffnen Sie die Datei "meta.xml" mit *Notepad++* (ggf. müssen Sie in der Ansicht einen automatischen Zeilenumbruch aktivieren).</span>
+<span id="cb3-180"><a href="#cb3-180"></a></span>
+<span id="cb3-181"><a href="#cb3-181"></a>:::panel-tabset</span>
+<span id="cb3-182"><a href="#cb3-182"></a></span>
+<span id="cb3-183"><a href="#cb3-183"></a><span class="fu">### Transferaufgabe 2</span></span>
+<span id="cb3-184"><a href="#cb3-184"></a></span>
+<span id="cb3-185"><a href="#cb3-185"></a>Fügen Sie über die Datei "meta.xml" weitere relevante Metadaten hinzu. Wie werden diese nach Kompilation der Dateien zu einer <span class="in">`.ods`</span>-Datei wohl dargestellt?</span>
+<span id="cb3-186"><a href="#cb3-186"></a></span>
+<span id="cb3-187"><a href="#cb3-187"></a><span class="fu">### Lösung</span></span>
+<span id="cb3-188"><a href="#cb3-188"></a></span>
+<span id="cb3-189"><a href="#cb3-189"></a>Da in der grafischen Oberfläche von LibreOffice Calc lediglich vorgegebene Eigenschaften abgebildert werden, werden Ihre zusätzlichen Metadaten nicht abgerufen. Allerdings bleiben Sie in der <span class="in">`.xml`</span>-Datei als Metadaten erhalten und sind so - mit entsprechenden Hinweisen (z.B. in ReadMes) für die Nachnutzenden innerhalb der Datei auffindbar. </span>
+<span id="cb3-190"><a href="#cb3-190"></a></span>
+<span id="cb3-191"><a href="#cb3-191"></a>:::</span>
+<span id="cb3-192"><a href="#cb3-192"></a></span>
+<span id="cb3-193"><a href="#cb3-193"></a><span class="fu">## Nachnutzen {.appendix .unnumbered}</span></span>
+<span id="cb3-194"><a href="#cb3-194"></a></span>
+<span id="cb3-195"><a href="#cb3-195"></a>Alle sind herzlich eingeladen, diesen Baustein und die zugehörige Copyleft-Lizenz zu nutzen, um ihr Wissen und Expertise in die Verbesserung und Aktualisierung einzubringen.</span>
+<span id="cb3-196"><a href="#cb3-196"></a></span>
+<span id="cb3-197"><a href="#cb3-197"></a>Unser Wunsch ist ein lebendiges, stetig aktualisiertes Dokument, das sich durch die Beiträge vieler verändert - im Einklang mit eines sich wandelnden Umfelds. Wir freuen uns im Falle einer Überarbeitung über eine kurze Notiz – das ist aber selbstverständlich keine Pflicht.</span>
+<span id="cb3-198"><a href="#cb3-198"></a></span>
+<span id="cb3-199"><a href="#cb3-199"></a><span class="co">&lt;!-- Verweise auf Website und Repository werden in _oer_metadata.yml global festgelegt. Wenn die OER nicht in einem git-Repository gehostet oder online bereitgestellt werden, können die folgenden zwei Zeilen gelöscht werden. --&gt;</span></span>
+<span id="cb3-200"><a href="#cb3-200"></a></span>
+<span id="cb3-201"><a href="#cb3-201"></a><span class="sc">:link:</span> <span class="co">[</span><span class="ot">Dieser Baustein als Website</span><span class="co">]({{&lt; meta site-url &gt;}})</span> </span>
+<span id="cb3-202"><a href="#cb3-202"></a></span>
+<span id="cb3-203"><a href="#cb3-203"></a><span class="sc">:link:</span> <span class="co">[</span><span class="ot">Quarto-Quellcode dieses Bausteins</span><span class="co">]({{&lt; meta repo-url &gt;}})</span></span>
+<span id="cb3-204"><a href="#cb3-204"></a></span>
+<span id="cb3-205"><a href="#cb3-205"></a>-----</span>
+<span id="cb3-206"><a href="#cb3-206"></a></span>
+<span id="cb3-207"><a href="#cb3-207"></a>Diese Übung nutzt ein <span class="co">[</span><span class="ot">FAIR-OER-Übungs-Template von NFDI4Objects</span><span class="co">](https://nfdi4objects.github.io/oer-template-skript/)</span>.</span>
+<span id="cb3-208"><a href="#cb3-208"></a></span>
+<span id="cb3-209"><a href="#cb3-209"></a><span class="fu">## Disclaimer: Einsatz von LLM {.appendix .unnumbered}</span></span>
+<span id="cb3-210"><a href="#cb3-210"></a></span>
+<span id="cb3-211"><a href="#cb3-211"></a><span class="co">&lt;!-- Optionale Angaben zum Einsatz von LLM bei der Erstellung oder Überarbeitung der Übung --&gt;</span></span>
+<span id="cb3-212"><a href="#cb3-212"></a></span>
+<span id="cb3-213"><a href="#cb3-213"></a><span class="co">&lt;!-- An dieser Stelle werden von Quarto automatisch generierte Abschnitte angehängt:</span></span>
+<span id="cb3-214"><a href="#cb3-214"></a></span>
+<span id="cb3-215"><a href="#cb3-215"></a><span class="co">Bibliographie:</span></span>
+<span id="cb3-216"><a href="#cb3-216"></a><span class="co">Erstellt aus den in der qmd-Datei mit [@bibtex-Schlüssel] referenzierten Einträgen aus der Datei bibliographie.bib.</span></span>
+<span id="cb3-217"><a href="#cb3-217"></a><span class="co">Im Text nicht referenzierte Einträge aus der bibliographie.bib werden nicht zitiert.</span></span>
+<span id="cb3-218"><a href="#cb3-218"></a><span class="co">Der Zitierstil wird in der _oer_metadata.yml mit dem Schlüssel 'csl:' festgelegt. Im Verzeichnis /assets/csl/ sind gängige Zitierstile als csl-Datei vorhanden. Weitere sind hier zu finden: https://www.zotero.org/styles</span></span>
+<span id="cb3-219"><a href="#cb3-219"></a></span>
+<span id="cb3-220"><a href="#cb3-220"></a><span class="co">Lizenz:</span></span>
+<span id="cb3-221"><a href="#cb3-221"></a><span class="co">Angabe wird übernommen aus Schlüssel 'license:' in _oer_metadata.yml</span></span>
+<span id="cb3-222"><a href="#cb3-222"></a></span>
+<span id="cb3-223"><a href="#cb3-223"></a><span class="co">Urheber:innen</span></span>
+<span id="cb3-224"><a href="#cb3-224"></a><span class="co">Angabe wird übernommen aus der _oer_metadata.yml Schlüssel 'copyright:'</span></span>
+<span id="cb3-225"><a href="#cb3-225"></a></span>
+<span id="cb3-226"><a href="#cb3-226"></a><span class="co">Zitiervorschläge</span></span>
+<span id="cb3-227"><a href="#cb3-227"></a><span class="co">Mit BibTeX zitieren:</span></span>
+<span id="cb3-228"><a href="#cb3-228"></a><span class="co">Automatisch von Quarto aus den Metadaten insb. aus dem Schlüssel 'citation:' in der _oer_metadata.yml generiertes bibtex-Zitat.</span></span>
+<span id="cb3-229"><a href="#cb3-229"></a></span>
+<span id="cb3-230"><a href="#cb3-230"></a><span class="co">Bitte zitieren Sie diesen OER-Baustein als:</span></span>
+<span id="cb3-231"><a href="#cb3-231"></a><span class="co">Angabe generiert aus:</span></span>
+<span id="cb3-232"><a href="#cb3-232"></a><span class="co">  _autor_innen.yml</span></span>
+<span id="cb3-233"><a href="#cb3-233"></a><span class="co">  Schlüssel 'title:' in der qmd-Datei</span></span>
+<span id="cb3-234"><a href="#cb3-234"></a><span class="co">  Schlüssel 'issued' in der _oer_metadata.yml</span></span>
+<span id="cb3-235"><a href="#cb3-235"></a><span class="co">  Schlüssel 'doi:' in der _oer_metadata.yml / Wenn keine doi gesetzt wird der Titel mit dem Wert aus 'site-url:' in _oer_metadata.yml verlinkt.</span></span>
+<span id="cb3-236"><a href="#cb3-236"></a><span class="co">--&gt;</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
