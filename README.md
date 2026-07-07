@@ -1,6 +1,6 @@
-# OER-Baustein: Skript zur Datenbereinigung mit OpenRefine
+# OER-Baustein: Übung Metadatenmanipulation in Tabellenprogrammen
 
-Dieses OER-Skript bietet eine praktische Einführung in die Arbeit mit OpenRefine anhand eines archäologischen Datensatzes.
+Diese OER-Übung bietet eine praktische Einführung in Struktur von Tabellendaten und zeigt Ihnen, wie Sie Metadaten in der XML-Datei einer .ods-Datei anlegen können. 
 
 
 ## Open Educational Resources (OER)
