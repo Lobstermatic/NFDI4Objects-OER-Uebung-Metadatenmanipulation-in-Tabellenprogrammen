@@ -1,6 +1,6 @@
 ---
 title: "NFDI4Objects OER-Übung Metadatenmanipulation in Tabellenprogrammen"
-subtitle: "Einstieg in XML"
+subtitle: "Tabellendateien in ihre Einzelteile zerlegen"
 lang: de
 date: today
 date-format: "DD.MM.YYYY"
