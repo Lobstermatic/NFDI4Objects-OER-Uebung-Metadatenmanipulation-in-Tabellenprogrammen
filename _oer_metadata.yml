@@ -1,11 +1,11 @@
 # Beschreibende Metadaten
 abstract: |
-  Abstract zur Übung.
+  Sie lernen hier, wie sie aus einer .ods-Datei ein ZIP-Archiv machen und sie damit in ihre Einzelteile zerlegen. Hier können Sie in der xml-Datei Metadaten zu Ihren Tabellendaten anlegen.
 abstract-title: "Zusammenfassung"
 description: |
-  Kurzbeschreibung der Inhalte der Übung.
+  Sie lernen hier, wie sie aus einer .ods-Datei ein ZIP-Archiv machen und sie damit in ihre Einzelteile zerlegen. Hier können Sie in der xml-Datei Metadaten zu Ihren Tabellendaten anlegen.
 funding: |
-  Optionale Angaben zur Förderung, in deren Rahmen die Übung erstellt wurde
+  DFG
 # vgl. https://quarto.org/docs/authoring/front-matter.html#funding
 
 # Open Graph Metadaten für HTML-Header: https://quarto.org/docs/websites/website-tools.html#open-graph
@@ -21,12 +21,13 @@ categories:
   - Übung
 # Für die inhaltliche Erschließung keywords/Stichworte/tags sollte ein kontrolliertes Vokabular genutzt werden.
 keywords:
-  - Stichwort 1
-  - Stichwort 2
+  - Metadaten
+  - Tabellendateien
+  - XML
 
 # Technische Metadaten
-site-url: &site https://github.com/nfdi4objects/oer-template-skript
-repo-url: &repo https://nfdi4objects.github.io/oer-template-skript/
+site-url: &site https://lobstermatic.github.io/NFDI4Objects-OER-Uebung-Metadatenmanipulation-in-Tabellenprogrammen/
+repo-url: &repo https://github.com/Lobstermatic/NFDI4Objects-OER-Uebung-Metadatenmanipulation-in-Tabellenprogrammen
 doi: XXXXXXX.XXXXXXX
 
 # Vorgaben für den Appendix "Zitat"
@@ -35,21 +36,21 @@ csl: assets/csl/internet-archaeology.csl # Verweis auf CSL-Datei mit Zitierforma
 citation:
   type: document
   container-title: "Open Educational Resource"
-  publisher: Institution
+  publisher: Hochschule Mainz
   issued: 2026
   url: *site
   license: "https://creativecommons.org/licenses/by/4.0/"
 
 # Rechtliche Metadaten
 copyright: "Freitext-Angaben zu Inhaber:innen des Urheberrechts an den Inhalten (Anzupassen im Schlüssel `copyright` in der Datei `_oer_metadata.yml`)"
-license: CC BY # # Optionen für Lizensierungsangaben: https://quarto.org/docs/authoring/front-matter.html#license. Wird übernommen in automatisch erstellten Appendix "Lizenz".
+license: CC BY 4.0 # # Optionen für Lizensierungsangaben: https://quarto.org/docs/authoring/front-matter.html#license. Wird übernommen in automatisch erstellten Appendix "Lizenz".
 
 # Spezifische Metadaten für den Export in fachliche Metadatenschemata
 
 # OERSI (vgl. https://oersi.gitlab.io/metadata-form/metadata-generator.html)
 bildungsstufe: https://w3id.org/kim/educationalLevel/level_A
 materialart: https://w3id.org/kim/hcrt/drill_and_practice
-status: Draft  # Draft, Incomplete, Published
+status: Incomplete  # Draft, Incomplete, Published
 
 # Schema für eigene Key-Value-Paare mit Bindestrich: custom-key: "custom-value"
 # beispiel-key: beispiel-value
