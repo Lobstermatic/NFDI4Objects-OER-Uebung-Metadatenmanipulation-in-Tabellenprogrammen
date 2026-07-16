@@ -26,9 +26,9 @@ keywords:
   - XML
 
 # Technische Metadaten
-site-url: &site https://lobstermatic.github.io/NFDI4Objects-OER-Uebung-Metadatenmanipulation-in-Tabellenprogrammen/
-repo-url: &repo https://github.com/Lobstermatic/NFDI4Objects-OER-Uebung-Metadatenmanipulation-in-Tabellenprogrammen
-doi: XXXXXXX.XXXXXXX
+site-url: &site https://nfdi4objects.github.io/oer-uebung-metadaten_tabellen_manipulieren/
+repo-url: &repo https://github.com/nfdi4objects/oer-uebung-metadaten_tabellen_manipulieren/
+# doi: XXXXXXX.XXXXXXX
 
 # Vorgaben für den Appendix "Zitat"
 csl: assets/csl/internet-archaeology.csl # Verweis auf CSL-Datei mit Zitierformat. Weitere CSL-Dateien im Verzeichnis assets/csl/. Fehlende CSL-Dateien können hier heruntergeladen werden: https://www.zotero.org/styles
